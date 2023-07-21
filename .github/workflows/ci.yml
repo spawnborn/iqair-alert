@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main  # Change this to the main branch name of your repository
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # You can also choose other platforms like macOS or Windows if needed
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Choose the Node.js version you want to use
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set up environment variables
+        env:
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}  # Access the secrets here
+          LINE_NOTIFICATION_TOKEN: ${{ secrets.LINE_NOTIFICATION_TOKEN }}
+        run: |
+          echo "WEATHER_API_KEY=${WEATHER_API_KEY}" >> $GITHUB_ENV
+          echo "LINE_NOTIFICATION_TOKEN=${LINE_NOTIFICATION_TOKEN}" >> $GITHUB_ENV
+
+      - name: Run npm start
+        run: npm start
