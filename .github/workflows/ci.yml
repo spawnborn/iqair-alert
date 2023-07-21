@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main  # Change this to the main branch name of your repository
+  schedule:
+    - cron: '*/5 * * * *'
+
+  # Allow manual triggering of the workflow
+  workflow_dispatch:
 
 jobs:
   build:
