@@ -6,13 +6,11 @@ on:
       - main  # Change this to the main branch name of your repository
   schedule:
     # Run the workflow at 9:00 AM (UTC) every day
-    - cron: '0 9 * * *'
+    - cron: '0 2 * * *'
     # Run the workflow at 12:00 PM (noon) (UTC) every day
-    - cron: '0 12 * * *'
-    # Run the workflow at 1:00 PM (UTC) every day
-    - cron: '0 13 * * *'
+    - cron: '0 5 * * *'
     # Run the workflow at 3:00 PM (UTC) every day
-    - cron: '0 15 * * *'
+    - cron: '0 8 * * *'
 
   # Allow manual triggering of the workflow
   workflow_dispatch:
